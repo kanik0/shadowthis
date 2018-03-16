@@ -26,6 +26,6 @@ def deshadow(msg):                                            # Gets the hidden 
 
 
 if __name__ == '__main__':
-    encoded = shadow('ciao, come stai?', 9666)                # Ex: hides the code '9666' into
-    print(encoded)                                            # a string and gets the code back
-    print(deshadow(encoded))                                  # from the encoded string
+    encoded = shadow('ciao, come stai?', 9666)                # Example: hides the code '9666'
+    print(encoded)                                            # into a string and gets the code
+    print(deshadow(encoded))                                  # back from the encoded string
