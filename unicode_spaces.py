@@ -1,0 +1,22 @@
+unicode_spaces = {
+    "SPACE": u"\u0020",
+    "NO-BREAK SPACE": u"\u00A0",
+    "OGHAM SPACE MARK": u"\u1680",
+    "MONGOLIAN VOWEL SEPARATOR": u"\u180E",
+    "EN QUAD": u"\u2000",
+    "EM QUAD": u"\u2001",
+    "EN SPACE": u"\u2002",
+    "EM SPACE": u"\u2003",
+    "THREE-PER-EM SPACE": u"\u2004",
+    "FOUR-PER-EM SPACE": u"\u2005",
+    "SIX-PER-EM SPACE": u"\u2006",
+    "FIGURE SPACE": u"\u2007",
+    "PUNCTUATION SPACE": u"\u2008",
+    "THIN SPACE": u"\u2009",
+    "HAIR SPACE": u"\u200A",
+    "ZERO WIDTH SPACE": u"\u200B",
+    "NARROW NO-BREAK SPACE": u"\u202F",
+    "MEDIUM MATHEMATICAL SPACE": u"\u205F",
+    "IDEOGRAPHIC SPACE": u"\u3000",
+    "ZERO WIDTH NO-BREAK SPACE": u"\uFEFF"
+}
