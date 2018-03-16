@@ -5,7 +5,7 @@
 
 ```python
 >>> shadow('ciao, come stai?', 9666)
-"ciao, ​﻿﻿​﻿​​​﻿﻿ come stai?"
+'ciao, ​﻿﻿​﻿​​​﻿﻿ come stai?'
 >>> deshadow('ciao, ​﻿﻿​﻿​​​﻿﻿ come stai?')
 9666
 ```
