@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from unicode_spaces import unicode_spaces
+from re import sub
 
 ONE = unicode_spaces["ZERO WIDTH SPACE"]
 ZERO = unicode_spaces["ZERO WIDTH NO-BREAK SPACE"]
@@ -14,18 +15,33 @@ def shadow(msg, userid):                                      # Inserts an hidde
         else:
             secret += ONE
 
-    output = msg.split()[0:1] + [secret] + msg.split()[1:]
-    output = u" ".join(output)
+    splitted = msg.split()
+    num_spaces = len(splitted) - 1
+    bits_per_space = len(binary_id) // num_spaces
+    if bits_per_space == 0:
+        bits_per_space = 1
+    output = []
+    index = 0
+
+    for word in splitted:
+        if index<len(secret):
+                output+=[word] + [" "] + [secret[index:index + bits_per_space]]
+                index += bits_per_space
+        else:
+                output+=[word] + [" "]
+
+    output = u"".join(output)
     return output
   
 def deshadow(msg):                                            # Gets the hidden userid back
-    secret = msg.split()[1]                                   # from a previously encoded message
+    secret = sub(r"[\x00-\x7f]+", "", msg)                    # from a previously encoded message
+
     secret = secret.replace(ONE, "1")
     secret = secret.replace(ZERO, "0")
     return int(secret, 2)
 
 
 if __name__ == '__main__':
-    encoded = shadow('ciao, come stai?', 9666)                # Example: hides the code '9666'
+    encoded = shadow('Hello, hope everything is going great overthere!', 9666)                # Example: hides the code '9666'
     print(encoded)                                            # into a string and gets the code
     print(deshadow(encoded))                                  # back from the encoded string
