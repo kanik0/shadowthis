@@ -18,7 +18,7 @@ def shadow(msg, userid):                                      # Inserts an hidde
     splitted = msg.split()
     num_spaces = len(splitted) - 1
     if num_spaces > 0:                                        # Standard case, msg contains more
-        bits_per_space = len(binary_id) // num_spaces         # than one word
+        bits_per_space = 1 + len(binary_id) // num_spaces         # than one word
         if bits_per_space == 0:
             bits_per_space = 1
         output = []
@@ -45,6 +45,6 @@ def deshadow(msg):                                            # Gets the hidden 
 
 
 if __name__ == '__main__':
-    encoded = shadow('test test test test test test test test test test test test test', 9666)                # Example: hides the code '9666'
+    encoded = shadow("Hello, hope everything is going great overthere!", 9666)                # Example: hides the code '9666'
     print(encoded)                                            # into a string and gets the code
     print(deshadow(encoded))                                  # back from the encoded string
