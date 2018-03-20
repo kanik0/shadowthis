@@ -4,8 +4,8 @@
 - The function `deshadow(msg)` gets the id back from a previously encoded string with the shadow function.
 
 ```python
->>> shadow('ciao, come stai?', 9666)
-'ciao, ​﻿﻿​﻿​​​﻿﻿ come stai?'
->>> deshadow('ciao, ​﻿﻿​﻿​​​﻿﻿ come stai?')
+>>> shadow('"Hello, hope everything is going great overthere!', 9666)
+'Hello, ​﻿﻿hope ​﻿​everything ​​﻿is ﻿﻿﻿going ​﻿great overthere!'
+>>> deshadow('Hello, ​﻿﻿hope ​﻿​everything ​​﻿is ﻿﻿﻿going ​﻿great overthere!')
 9666
 ```
