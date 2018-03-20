@@ -17,24 +17,27 @@ def shadow(msg, userid):                                      # Inserts an hidde
 
     splitted = msg.split()
     num_spaces = len(splitted) - 1
-    bits_per_space = len(binary_id) // num_spaces
-    if bits_per_space == 0:
-        bits_per_space = 1
-    output = []
-    index = 0
+    if num_spaces > 0:                                        # Standard case, msg contains more
+        bits_per_space = len(binary_id) // num_spaces         # than one word
+        if bits_per_space == 0:
+            bits_per_space = 1
+        output = []
+        index = 0
 
-    for word in splitted:
-        if index<len(secret):
-                output+=[word] + [" "] + [secret[index:index + bits_per_space]]
-                index += bits_per_space
-        else:
-                output+=[word] + [" "]
+        for word in splitted:
+            if index<len(secret):
+                    output += [word] + [" "] + [secret[index:index + bits_per_space]]
+                    index += bits_per_space
+            else:
+                    output += [word] + [" "]
 
-    output = u"".join(output)
+        output = u"".join(output)
+    else:                                                     # Case where msg contains only one word
+        output = msg + secret
     return output
   
 def deshadow(msg):                                            # Gets the hidden userid back
-    secret = sub(r"[\x00-\x7f]+", "", msg)                    # from a previously encoded message
+    secret = sub(r"[^\u200B\uFEFF]+", "", msg)               # from a previously encoded message
 
     secret = secret.replace(ONE, "1")
     secret = secret.replace(ZERO, "0")
@@ -42,6 +45,6 @@ def deshadow(msg):                                            # Gets the hidden 
 
 
 if __name__ == '__main__':
-    encoded = shadow('Hello, hope everything is going great overthere!', 9666)                # Example: hides the code '9666'
+    encoded = shadow('test test test test test test test test test test test test test', 9666)                # Example: hides the code '9666'
     print(encoded)                                            # into a string and gets the code
     print(deshadow(encoded))                                  # back from the encoded string
