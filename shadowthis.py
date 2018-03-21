@@ -15,7 +15,7 @@ def shadow(msg, userid):                                      # Inserts an hidde
         else:
             secret += ONE
 
-    splitted = msg.split()
+    splitted = msg.split(" ")
     num_spaces = len(splitted) - 1
     if num_spaces > 0:                                        # Standard case, msg contains more
         bits_per_space = 1 + len(binary_id) // num_spaces     # than one word
